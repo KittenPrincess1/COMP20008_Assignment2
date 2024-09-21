@@ -1,11 +1,11 @@
 import Elderly, Minors, Racial_Minorities, Disadvantaged_People
 
-def main():
-    Disadvantaged_People.task1
+localGovernmentArea = 'Melbourne (C)'
 
-    Elderly.task2
+Disadvantaged_People.task1(localGovernmentArea)
 
-    Minors.task3
+Elderly.task2()
 
-    Racial_Minorities.task4
-    return
+Minors.task3()
+
+Racial_Minorities.task4()
