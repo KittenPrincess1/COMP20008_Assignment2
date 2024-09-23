@@ -31,7 +31,8 @@ def task2_preprocessing():
 
     return communities
 
-# 2.EDA + Correlation + Trend Analysis
+# 2.EDA + Correlation
+
 def task2_analysis(communities):
     # EDA
     print("Data Description:")
@@ -97,7 +98,7 @@ def task2(LGA):
     task2_correlation(communities)
 
     task2_supervised_ml(communities)
-    
+
     task2_unsupervised_ml(communities)
 
     print(f"Elderly and Disabled analysis completed for {LGA}")
