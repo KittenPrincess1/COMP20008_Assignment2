@@ -73,3 +73,8 @@ def task2(LGA):
     task2_ml(communities)
 
     print(f"Elderly and Disabled analysis completed for {LGA}")
+
+
+if __name__ == "__main__":
+    localGovernmentArea = 'Melbourne (C)' 
+    task2(localGovernmentArea)
