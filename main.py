@@ -4,7 +4,7 @@ localGovernmentArea = 'Melbourne (C)'
 
 Disadvantaged_People.task1(localGovernmentArea)
 
-Elderly.task2()
+Elderly.task2(localGovernmentArea)
 
 Minors.task3()
 
