@@ -1,3 +1,3 @@
-def task2(LGA):
+def task2():
 
-    print(f"Elderly and Disabled analysis completed for {LGA}")
+    print(f"Elderly and Disabled analysis completed for ")

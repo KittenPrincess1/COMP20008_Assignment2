@@ -1,11 +1,9 @@
-import Elderly, Minors, Racial_Minorities, Disadvantaged_People
+import preprocessing, Elderly, Racial_Minorities, Disadvantaged_People
 
-localGovernmentArea = 'Melbourne (C)'
+df = preprocessing.get_data("communities.csv")
 
-Disadvantaged_People.task1(localGovernmentArea)
+Disadvantaged_People.task1()
 
-Elderly.task2(localGovernmentArea)
-
-Minors.task3()
+Elderly.task2()
 
 Racial_Minorities.task4()

@@ -1,9 +1,9 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import json
-import helper
 
-def task1(LGA):
+def task1():
+    LGA = "Melbourne 'C"
     # open the files containing the data concerning Economically disadvantaged people
     with open('Data/communities.csv', 'r') as in_file:
         communities = pd.read_csv(in_file)
