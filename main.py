@@ -1,4 +1,4 @@
-import preprocessing, Elderly, Racial_Minorities, Disadvantaged_People
+import preprocessing, Elderly, Minors, Racial_Minorities, Disadvantaged_People
 
 df = preprocessing.get_data("communities.csv")
 
