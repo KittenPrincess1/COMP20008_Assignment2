@@ -1,25 +1,33 @@
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
+import preprocessing
 
 
 def task3()
     # Read the CSV file
     communi = pd.read_csv("Data/communities.csv")
+
+     # List of student-related columns
+    students = ['Primary school students', 'Secondary school students', 'TAFE students', 'University students', 'Holds degree or higher, persons', 'Did not complete year 12, persons']
+    other = ['Unemployed, persons']
+    columns = students + other
+
+    # Preprocess the required data 
+    for col in columns:
+        if col in communi.columns:
+            communi[col] = communi[col].apply(preprocessing.standardise)
+            communi[col] = communi[col].astype(int)
+        else:
+            print("Can't find the specific column.")
   
     # Get the LGA types
     communi['LGA Type'] = communi['LGA'].str.extract(r'\((.*?)\)')
-
-    # List of school and student-related columns
-    schools = ['Kinder and/or Childcare', 'Primary Schools', 'Secondary Schools', 'P12 Schools', 'Other Schools']
-    students = ['Primary school students', 'Secondary school students', 'TAFE students', 'University students', 'Holds degree or higher, persons', 'Did not complete year 12, persons']
-    other = ['Unemployed, persons']
-    columns = schools + students + other
    
     # Bar chart to show the number of students in each LGA
     grouped_schools = communi.groupby('LGA Type')[students].sum()
     grouped_schools.plot(kind='bar', figsize=(15, 8), color=['lightblue', 'yellow', 'orange', 'lightgreen', 'pink', 'coral'])
-    plt.title('Number of in different level students in LGA types')
+    plt.title('Number of different student levels in LGA types')
     plt.xlabel('LGA Type')
     plt.ylabel('Number of students')
     plt.show()
@@ -53,8 +61,8 @@ def task3()
       print("Some data are missing.")
       
     # find out the Pearson correlation coefficent
-    pearson_corr = communi[['Primary Schools', 'Secondary Schools', 'TAFE students', 'University students', 'Holds degree or higher, persons',
-                            'Did not complete year 12, persons', 'Unemployed, persons']].corr(method='pearson')
+    pearson_corr = communi[['Unemployed, persons', 'Primary school students', 'Secondary school students', 'TAFE students', 'University students', 'Holds degree or higher, persons',
+                            'Did not complete year 12, persons']].corr(method='pearson')
     print("Pearson Correlation Matrix:")
     print(pearson_corr)
   
