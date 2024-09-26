@@ -45,5 +45,4 @@ def task4():
     plt.savefig('Born_Overseas.png')
     plt.close()
 
-    return
-task4()    
+    return 
