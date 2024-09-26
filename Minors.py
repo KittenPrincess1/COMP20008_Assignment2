@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import preprocessing
 
 
-def task3()
+def task3():
     # Read the CSV file
     communi = pd.read_csv("Data/communities.csv")
 
