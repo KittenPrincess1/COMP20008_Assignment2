@@ -4,14 +4,9 @@ import matplotlib.pyplot as plt
 import preprocessing
 
 
-def task3()
+def task3():
     # Read the CSV file
     communi = pd.read_csv("Data/communities.csv")
-
-     # List of student-related columns
-    students = ['Primary school students', 'Secondary school students', 'TAFE students', 'University students', 'Holds degree or higher, persons', 'Did not complete year 12, persons']
-    other = ['Unemployed, persons']
-    columns = students + other
 
     # Preprocess the required data 
     for col in columns:
@@ -22,15 +17,7 @@ def task3()
             print("Can't find the specific column.")
   
     # Get the LGA types
-    communi['LGA Type'] = communi['LGA'].str.extract(r'\((.*?)\)')
-   
-    # Bar chart to show the number of students in each LGA
-    grouped_schools = communi.groupby('LGA Type')[students].sum()
-    grouped_schools.plot(kind='bar', figsize=(15, 8), color=['lightblue', 'yellow', 'orange', 'lightgreen', 'pink', 'coral'])
-    plt.title('Number of different student levels in LGA types')
-    plt.xlabel('LGA Type')
-    plt.ylabel('Number of students')
-    plt.show()
+    communi['LGA Type'] = communi['LGA'].str.extract(r'\((.*?)\)')    
   
     # Histogram to show the frequency of unemployed persons
     plt.figure(figsize=(10, 6))
@@ -38,7 +25,9 @@ def task3()
     plt.title('Unemployed persons frequency')
     plt.xlabel('Number of unemployed persons')
     plt.ylabel('Frequency')
-    plt.show()
+    plt.savefig("unemployed_histogram.png")
+    plt.close()
+    
 
     # Box plot to show the distribution of unemployed persons in each LGA
     plt.figure(figsize=(15, 8))
@@ -46,12 +35,14 @@ def task3()
     plt.title('Unemployed Persons by different Local Government Area')
     plt.xlabel('LGA types')
     plt.ylabel('Number of unemployed persons')
-    plt.show()
+    plt.savefig("unemployed_LGA_boxplot.png")
+    plt.close()
+    
 
     # check the columns are exist and no missing data 
     exist = False
     for col in columns:
-      if col in df.columns:
+      if col in communi.columns:
         exist = True
         break 
     if exist:
@@ -61,15 +52,23 @@ def task3()
       print("Some data are missing.")
       
     # find out the Pearson correlation coefficent
-    pearson_corr = communi[['Unemployed, persons', 'Primary school students', 'Secondary school students', 'TAFE students', 'University students', 'Holds degree or higher, persons',
+    students_corr = communi[['Unemployed, persons', 'Primary school students', 'Secondary school students', 'TAFE students', 'University students', 'Holds degree or higher, persons',
                             'Did not complete year 12, persons']].corr(method='pearson')
-    print("Pearson Correlation Matrix:")
-    print(pearson_corr)
-  
-    # Get the correlatin base on the Pearson Correlation Heatmap
-    plt.figure(figsize=(15, 10))
-    sns.heatmap(pearson_corr, annot=True, cmap='coolwarm', linewidths=0.5)
+    young_corr = communi[['Unemployed, persons','2007 ERP age 0-4, persons', '2007 ERP age 5-9, persons',  '2007 ERP age 10-14, persons', '2007 ERP age 15-19, persons', '2007 ERP age 20-24, persons',
+                          '2012 ERP age 0-4, persons', '2012 ERP age 5-9, persons', '2012 ERP age 10-14, persons', '2012 ERP age 15-19, persons', '2012 ERP age 20-24, persons']].corr(method='pearson') 
+    
+    # Get the correlation base on the Pearson Correlation Heatmap
+    plt.figure(figsize=(20, 20))
+    sns.heatmap(students_corr, annot=True, cmap='coolwarm', linewidths=0.5)
     plt.title('Correlation between unemployed persons and student types')
-    plt.show()
+    plt.savefig("unemployed_student_heatmap.png")
+    plt.close()
+
+    plt.figure(figsize=(20, 20))
+    sns.heatmap(young_corr, annot=True, cmap='coolwarm', linewidths=0.5)
+    plt.title('Correlation between unemployed persons and young groups')
+    plt.savefig("unemployed_young_heatmap.png")
+    plt.close()
+    
     
     

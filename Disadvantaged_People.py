@@ -1,6 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import json
+import preprocessing
 
 def task1():
     LGA = "Melbourne 'C"
@@ -12,10 +13,10 @@ def task1():
     demographics = ["Equivalent household income <$600/week", "Personal income <$400/week, persons", "IRSD (avg)"]
     #preprocess the data so that it can be treated as an integer with no issues
     for service in services:
-        communities[service] = communities[service].apply(helper.standardise)
+        communities[service] = communities[service].apply(preprocessing.standardise)
         communities[service] = communities[service].astype(int)
     for demographic in demographics:
-        communities[demographic] = communities[demographic].apply(helper.standardise)
+        communities[demographic] = communities[demographic].apply(preprocessing.standardise)
         communities[demographic] = communities[demographic].astype(int)
     # find the average number of each service, given the number of economically disadvantaged people in a local government area
     # and use it to project the number of a service that our LGA will require, given its demographics
