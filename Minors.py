@@ -48,7 +48,7 @@ def task3():
     # check the columns are exist and no missing data 
     exist = False
     for col in columns:
-      if col in df.columns:
+      if col in communi.columns:
         exist = True
         break 
     if exist:
