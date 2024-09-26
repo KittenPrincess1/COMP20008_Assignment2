@@ -2,6 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 def task4():
+    # Open and read CSV data
     communities = pd.read_csv('Data/communities.csv')
 
     # Preprocessing to remove string values 
