@@ -8,12 +8,6 @@ def task3():
     # Read the CSV file
     communi = pd.read_csv("Data/communities.csv")
 
-     # List of student-related columns
-    young = []
-    students = ['Primary school students', 'Secondary school students', 'TAFE students', 'University students', 'Holds degree or higher, persons', 'Did not complete year 12, persons']
-    other = ['Unemployed, persons']
-    columns = students + other
-
     # Preprocess the required data 
     for col in columns:
         if col in communi.columns:
@@ -64,13 +58,13 @@ def task3():
                           '2012 ERP age 0-4, persons', '2012 ERP age 5-9, persons', '2012 ERP age 10-14, persons', '2012 ERP age 15-19, persons', '2012 ERP age 20-24, persons']].corr(method='pearson') 
     
     # Get the correlation base on the Pearson Correlation Heatmap
-    plt.figure(figsize=(15, 10))
+    plt.figure(figsize=(20, 20))
     sns.heatmap(students_corr, annot=True, cmap='coolwarm', linewidths=0.5)
     plt.title('Correlation between unemployed persons and student types')
     plt.savefig("unemployed_student_heatmap.png")
     plt.close()
 
-    plt.figure(figsize=(15, 10))
+    plt.figure(figsize=(20, 20))
     sns.heatmap(young_corr, annot=True, cmap='coolwarm', linewidths=0.5)
     plt.title('Correlation between unemployed persons and young groups')
     plt.savefig("unemployed_young_heatmap.png")
