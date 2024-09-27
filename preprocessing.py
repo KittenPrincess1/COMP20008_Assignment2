@@ -8,17 +8,21 @@ def get_data(file_name):
     integer_rows = [
         "IRSD (avg)", "Aboriginal or Torres Strait Islander, persons", "Born overseas, persons", 
         "Born in non-English speaking country, persons", "Homelessness", "Centrelink Offices", "Medicare Offices",
-        "Equivalent household income <$600/week", "Personal income <$400/week, persons"
+        "Equivalent household income <$600/week, %", "Personal income <$400/week, %", "Female-headed lone parent families, %",
+        "Male-headed lone parent families, %", "Child Protection and Family"
         ]
 
     for row in integer_rows:
         communities[row] = communities[row].apply(standardise)
-        communities[row] = communities[row].astype(int)
+        communities[row] = communities[row].astype(float)
+
+    #create any required rows that are derived from preexisting rows
+    communities["Lone parent families, %"] = communities["Male-headed lone parent families, %"] + communities["Female-headed lone parent families, %"]
 
     return communities
 
 def standardise(s):
     try:
-        return int(s)
+        return float(s)
     except:
         return 0
