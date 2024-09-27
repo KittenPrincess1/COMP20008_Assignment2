@@ -8,11 +8,12 @@ def task3():
     # Read the CSV file
     communi = pd.read_csv("Data/communities.csv")
     
-    # Preprocess the required data, check the columns are exist and no missing data 
-    students = ['Primary school students', 'Secondary school students', 'TAFE students', 'University students']
-    young = ['2007 ERP age 0-4, persons', '2007 ERP age 5-9, persons',  '2007 ERP age 10-14, persons', '2007 ERP age 15-19, persons',
-             '2007 ERP age 20-24, persons', '2012 ERP age 0-4, persons', '2012 ERP age 5-9, persons', '2012 ERP age 10-14, persons',
-             '2012 ERP age 15-19, persons', '2012 ERP age 20-24, persons']
+    # Preprocessing the required data, check the columns are exist
+    students = ['Primary school students', 'Secondary school students', 'TAFE students', 'University students',
+                'Holds degree or higher, persons', 'Did not complete year 12, persons']
+    young = ['2007 ERP age 0-4, persons', '2007 ERP age 5-9, persons', '2007 ERP age 10-14, persons', 
+             '2007 ERP age 15-19, persons', '2007 ERP age 20-24, persons', '2012 ERP age 0-4, persons', 
+             '2012 ERP age 5-9, persons', '2012 ERP age 10-14, persons', '2012 ERP age 15-19, persons', '2012 ERP age 20-24, persons']
     other = ['Unemployed, persons']
     columns = students + young + other  
     for col in columns:
@@ -44,10 +45,11 @@ def task3():
     plt.close()
 
     # find out the Pearson correlation coefficent
-    students_corr = communi[['Unemployed, persons', 'Primary school students', 'Secondary school students', 'TAFE students', 'University students', 'Holds degree or higher, persons',
-                            'Did not complete year 12, persons']].corr(method='pearson')
-    young_corr = communi[['Unemployed, persons','2007 ERP age 0-4, persons', '2007 ERP age 5-9, persons',  '2007 ERP age 10-14, persons', '2007 ERP age 15-19, persons', '2007 ERP age 20-24, persons',
-                          '2012 ERP age 0-4, persons', '2012 ERP age 5-9, persons', '2012 ERP age 10-14, persons', '2012 ERP age 15-19, persons', '2012 ERP age 20-24, persons']].corr(method='pearson') 
+    students_corr = communi[['Unemployed, persons', 'Primary school students', 'Secondary school students', 'TAFE students',
+                             'University students', 'Holds degree or higher, persons', 'Did not complete year 12, persons']].corr(method='pearson')
+    young_corr = communi[['Unemployed, persons','2007 ERP age 0-4, persons', '2007 ERP age 5-9, persons',  '2007 ERP age 10-14, persons', 
+                          '2007 ERP age 15-19, persons', '2007 ERP age 20-24, persons', '2012 ERP age 0-4, persons', '2012 ERP age 5-9, persons', 
+                          '2012 ERP age 10-14, persons', '2012 ERP age 15-19, persons', '2012 ERP age 20-24, persons']].corr(method='pearson') 
     
     # Get the correlation base on the Pearson Correlation Heatmap
     plt.figure(figsize=(20, 20))
