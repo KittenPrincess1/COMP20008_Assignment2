@@ -6,6 +6,6 @@ Disadvantaged_People.task1(df)
 
 Elderly.task2()
 
-#Minors.task3()
+Minors.task3()
 
 Racial_Minorities.task4()
