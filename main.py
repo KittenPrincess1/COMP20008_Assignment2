@@ -1,10 +1,8 @@
-import preprocessing, Elderly, Minors, Racial_Minorities, Disadvantaged_People
+import preprocessing, Minors, Racial_Minorities, Disadvantaged_People
 
 df = preprocessing.get_data("Data/communities.csv")
 
 Disadvantaged_People.task1(df)
-
-Elderly.task2()
 
 Minors.task3()
 
