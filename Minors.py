@@ -19,6 +19,7 @@ def task3():
     for col in columns:
         if col in communi.columns:
             communi[col] = communi[col].apply(preprocessing.standardise)
+            communi[col].fillna(0, inplace=True)  
             communi[col] = communi[col].astype(int)
         else:
             print("Can't find the specific column.")
