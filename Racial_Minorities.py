@@ -1,22 +1,12 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
-def task4():
-    # Open and read CSV data
-    communities = pd.read_csv('Data/communities.csv')
-
-    # Preprocessing to remove string values 
-    aboriginals = communities['Aboriginal or Torres Strait Islander, persons'].replace('<5', 0)
-    aboriginals = aboriginals.astype(int)
-
-    IRSD_avg = communities['IRSD (avg)'].replace('<5', 0)
-    IRSD_avg = IRSD_avg.astype(float)
-    
-    BOS = communities['Born overseas, persons'].replace('<5', 0)
-    BOS = BOS.astype(int)
-
-    NESB = communities['Born in non-English speaking country, persons'].replace('<5', 0)
-    NESB = NESB.astype(int)
+def task4(communities):
+    # Getting the key data that we need 
+    aboriginals = communities['Aboriginal or Torres Strait Islander, persons']
+    IRSD_avg = communities['IRSD (avg)']
+    BOS = communities['Born overseas, persons']
+    NESB = communities['Born in non-English speaking country, persons']
 
     df1 = pd.merge(aboriginals, IRSD_avg, right_index =True, left_index = True)
     df2 = pd.DataFrame(BOS).join(NESB).join(IRSD_avg)
