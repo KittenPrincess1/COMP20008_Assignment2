@@ -21,27 +21,6 @@ def task3(communi):
         else:
             print("Can't find the specific column.")
     
-    # Get the LGA types
-    communi['LGA Type'] = communi['LGA'].str.extract(r'\((.*?)\)')    
-    
-    # Histogram to show the frequency of unemployed persons
-    plt.figure(figsize=(10, 6))
-    sns.histplot(communi['Unemployed, persons'], bins=30, kde=True)
-    plt.title('Unemployed persons frequency')
-    plt.xlabel('Number of unemployed persons')
-    plt.ylabel('Frequency')
-    plt.savefig("unemployed_histogram.png")
-    plt.close()
-    
-    # Box plot to show the distribution of unemployed persons in each LGA
-    plt.figure(figsize=(15, 8))
-    sns.boxplot(data=communi, x='LGA Type', y='Unemployed, persons')
-    plt.title('Unemployed Persons by different Local Government Area')
-    plt.xlabel('LGA types')
-    plt.ylabel('Number of unemployed persons')
-    plt.savefig("unemployed_LGA_boxplot.png")
-    plt.close()
-
     # find out the Pearson correlation coefficent
     students_corr = communi[['Unemployed, persons', 'Primary school students', 'Secondary school students', 'TAFE students',
                              'University students', 'Holds degree or higher, persons', 'Did not complete year 12, persons']].corr(method='pearson')
