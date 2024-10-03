@@ -2,7 +2,6 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 def task1(communities):
-    services = ["Homelessness", "Centrelink Offices", "Medicare Offices", "Child Protection and Family"]
     demographics = ["Lone parent families, %", "Equivalent household income <$600/week, %", "Personal income <$400/week, %"]
     metric = "IRSD (avg)"
     

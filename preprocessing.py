@@ -5,14 +5,14 @@ def get_data(file_name):
         communities = pd.read_csv(in_file)
 
     # add in any rows that you want to analyse as integers
-    integer_rows = [
+    numerical_rows = [
         "IRSD (avg)", "Aboriginal or Torres Strait Islander, persons", "Born overseas, persons", 
         "Born in non-English speaking country, persons", "Homelessness", "Centrelink Offices", "Medicare Offices",
         "Equivalent household income <$600/week, %", "Personal income <$400/week, %", "Female-headed lone parent families, %",
         "Male-headed lone parent families, %", "Child Protection and Family"
         ]
 
-    for row in integer_rows:
+    for row in numerical_rows:
         communities[row] = communities[row].apply(standardise)
         communities[row] = communities[row].astype(float)
 

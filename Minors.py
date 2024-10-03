@@ -4,10 +4,7 @@ import matplotlib.pyplot as plt
 import preprocessing
 
 
-def task3():
-    # Read the CSV file
-    communi = pd.read_csv("Data/communities.csv")
-    
+def task3(communi):
     # Preprocessing the required data, check the columns are exist
     students = ['Primary school students', 'Secondary school students', 'TAFE students', 'University students',
                 'Holds degree or higher, persons', 'Did not complete year 12, persons']
